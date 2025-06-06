@@ -1,0 +1,21 @@
+<html>
+<div>Список собщений</div>
+<table style="width:100%">
+       <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>date</th>
+          <th>o`clock</th>
+       </tr>
+{{#massages}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{text}}</td>
+            <td>{{tag}}</td>
+            <td>{{koment}}</td>
+        </tr>
+{{/massages}}
+    </table>
+
+<a href="main"> Jadval</a>
+</html>

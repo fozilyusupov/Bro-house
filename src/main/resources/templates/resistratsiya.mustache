@@ -1,0 +1,36 @@
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bro-House</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+<div class="register-photo">
+    <div class="form-container">
+        <div class="image-holder" style="background-image: url(assets/img/about-1.jpg);"></div>
+        <form method="post">
+            <h2 class="text-center"><strong>Создать аккаунт.</strong></h2>
+            <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Login"required></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"required></div>
+            <div class="form-group"><input class="form-control" type="login" name="login" placeholder="Bareber name"required></div>
+            <div class="form-group"><input class="form-control" type="age" name="age" placeholder="Age"required></div>
+            <div class="form-group"><input class="form-control" type="nomeri" name="nomeri" placeholder="Telephone number"required></div>
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <div><input type="submit" value="Sign In"/></div>
+            <a class="already" href="/">У вас&nbsp; есть аккаунт? Зоходите на Log in</a>
+        </form>
+    </div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>KPI</title>
+</head>
+<body class="bg-light">
+
+<form method="post" action="/KPIsave">
+    <div>
+        <table>
+            <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ism</th>
+            <th>date</th>
+            <th>zadaniya</th>
+            <th></th>
+        </tr>
+        </thead>
+            <tbody>
+            {{#Kpi}}
+                <tr>
+                    <th>{{id}}</th>
+                    <th>{{name}}</th>
+                    <th>{{date}}</th>
+                    <th>{{zadacha}}</th>
+                    <th>
+                        <input type="submit" name="id" value={{id}}>
+                    </th>
+                </tr>
+            {{/Kpi}}
+            </tbody>
+
+        </table>
+    </div>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+
+</form>
+
+<div class="container">
+    <div style="width: 900px; position: absolute; top: 25%; left: 50%; transform: translate(-50%, -50%)">
+        <div class="row">
+            <div class="col-md-12">
+                {{#n}}{{barbername}}{{/n}}
+                <form method="post" action="/save">
+                    <table class="table w-100 table-bordered table-striped shadow-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Имя заказчика</th>
+                                <th scope="col">Стрижка</th>
+                                <th scope="col">Коментарие</th>
+                                <th scope="col">Время</th>
+                                <th scope="col">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#massages}}
+                                <tr class="orders">
+                                    <td>{{id}}</td>
+                                    <td>{{username}}</td>
+                                    <td class="style">{{still}}</td>
+                                    <td>{{message}}</td>
+                                    <td>{{date}} &nbsp; {{time}}</td>
+                                    <td><input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                                        <button type="submit"  name="id" value="{{id}}"  class="btn btn-sm btn-success">Принять<input type="hidden" name="status" value="save"></button>
+                                        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                                        <!--button type="submit"  name="id" value="{{id}}"  class="btn btn-sm btn-danger"><input type="hidden" name="status" value="delete">Отклонить</button-->
+                                    </td>
+                                </tr>
+                            {{/massages}}
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+
+            <div class="row-cols-md-3">
+            <form method="post" action="/bronTime">
+            <div class="col-md-6" style="
+    padding: 0;
+">
+                <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+                <div class="form-group">
+                    <input id="date" type="date" name="data" class="form-control datepicker" placeholder="Дата" required />
+                </div>
+            </div>
+            <div class="col-md-6" style="
+    padding: 0 0 0 1px;
+">
+                <div class="form-group">
+                    <select id="time"  name="time" class="form-control" placeholder="Время" required onchange="chooseTime(this)">
+                        <option id="chooseTime" value="">Выберите время</option>
+                        <option id="time_8">8:00</option>
+                        <option id="time_9">9:00</option>
+                        <option id="time_10">10:00</option>
+                        <option id="time_11">11:00</option>
+                        <option id="time_12">12:00</option>
+                        <option id="time_13">13:00</option>
+                        <option id="time_14">14:00</option>
+                        <option id="time_15">15:00</option>
+                        <option id="time_16">16:00</option>
+                        <option id="time_17">17:00</option>
+                        <option id="time_18">18:00</option>
+                        <option id="time_19">19:00</option>
+                        <option id="time_20">20:00</option>
+                        <option id="time_21">21:00</option>
+                        <option id="time_22">22:00</option>
+                        <option id="time_23">23:00</option>
+                        <option id="all">Вес день</option>
+                    </select>
+                </div>
+            </div>
+        <div class="form-group">
+            <input id="main-btn" type="submit" class="btn btn-outline-dark" value="Закрыт">
+        </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="/static/util_kpi/bootstrap.min.css"></script>
+<!--
+<script src="/static/util_kpi/popper.min.js"></script>
+<script src="/static/util_kpi/bootstrap.min.js"></script>
+-->
+
+<script>
+    for (const order of document.querySelectorAll(".orders")) {
+        if(order.children[2].innerHTML == "."){
+            order.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
